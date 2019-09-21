@@ -7,16 +7,16 @@ def main():
   starting_population = [
      {'group': 'male_prey', 'number': 10, 'color': get_random_color, 'max_age': 2, 'interaction': male_interaction},
      {'group': 'female_prey', 'number': 10, 'color': get_random_color, 'max_age': 2, 'interaction': reproduce},
-     {'group': 'predators', 'number': 10, 'color': get_predator_color, 'max_age': 5, 'interaction': eat_prey}
+     {'group': 'predators', 'number': 10, 'color': get_predator_color, 'max_age': 10, 'interaction': eat_prey}
      ]
     
   print('generating population...')
   population= initialize_population(starting_population)
-  print('beginning population...')
+  print('starting population:')
   plot_population(population)
   print('begin interactions ...')
   population = populations_interact(population, 10)
-  print('final population')
+  print('final population:')
   plot_population(population)
 
 #Initialization 
@@ -41,6 +41,7 @@ def populations_interact(population, cycles):
        population = population_move(population)
        population = population_interact(population)
        population = clean_population(population)
+       print('population iteration', i)
        plot_population(population)
     return population
 
